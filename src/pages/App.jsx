@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { initializeTasks } from "../reducers/reducer";
 
-const App = () => (
-  <div className="flex justify-center">
-    <p>Hello world!</p>
-  </div>
-);
+import Tasks from "../components/Tasks";
+
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initializeTasks());
+  }, [dispatch]);
+
+  return <Tasks />;
+};
 
 export default App;

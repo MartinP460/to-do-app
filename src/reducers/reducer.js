@@ -19,28 +19,23 @@ const tasks = [
   },
 ];
 
-export const initializeTasks = () => (dispatch) => {
-  dispatch({
-    type: "INIT_TASKS",
-    data: tasks,
-  });
-};
+export const initializeTasks = () => ({
+  type: "INIT_TASKS",
+  data: tasks,
+});
 
-export const createTask = (content) => (dispatch) => {
-  dispatch({
-    type: "NEW_TASK",
-    data: content,
-  });
-};
+export const createTask = (content) => ({
+  type: "NEW_TASK",
+  data: content,
+});
 
-export const updateTask = (content) => (dispatch) => {
-  dispatch({
-    type: "UPDATE_TASK",
-    data: content,
-  });
-};
+export const updateTask = (content) => ({
+  type: "UPDATE_TASK",
+  data: content,
+});
 
-const reducer = (action, state = []) => {
+// eslint-disable-next-line default-param-last
+const reducer = (state = [], action) => {
   switch (action.type) {
     case "INIT_TASKS": {
       return action.data;
