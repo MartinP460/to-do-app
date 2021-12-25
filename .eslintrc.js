@@ -14,7 +14,7 @@ module.exports = {
   },
   plugins: ["react", "prettier"],
   rules: {
-    "prettier/prettier": ["error"],
+    "prettier/prettier": ["error", { endOfLine: "auto" }],
     "func-names": ["off"],
     "react/function-component-definition": ["off"],
   },
