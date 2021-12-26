@@ -1,19 +1,31 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import ActiveTasks from "./ActiveTasks";
-import CompletedTasks from "./CompletedTasks";
+import Task from "./common/Task";
 
 const Tasks = () => {
-  // eslint-disable-next-line no-shadow
-  const tasks = useSelector((tasks) => tasks);
+  const [active, completed] = useSelector((tasks) => [
+    tasks.filter((t) => !t.completed),
+    tasks.filter((t) => t.completed),
+  ]);
 
-  console.log(tasks);
+  console.log(active);
+  console.log(completed);
 
   return (
     <>
-      <ActiveTasks tasks={tasks.filter((t) => !t.completed)} />
-      <CompletedTasks tasks={tasks.filter((t) => t.completed)} />
+      <h3 className="text-xl font-bold mb-2">Active tasks</h3>
+      {active.length === 0 ? (
+        <p>No active tasks.</p>
+      ) : (
+        active.map((task) => <Task task={task} key={task.id} />)
+      )}
+      <h3 className="text-xl font-bold mb-2 mt-8">Completed tasks</h3>
+      {completed.length === 0 ? (
+        <p>No completed tasks.</p>
+      ) : (
+        completed.map((task) => <Task task={task} key={task.id} />)
+      )}
     </>
   );
 };
