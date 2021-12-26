@@ -41,7 +41,8 @@ const reducer = (state = [], action) => {
       return action.data;
     }
     case "NEW_TASK": {
-      return state.concat(action.data);
+      const newTask = { ...action.data, id: state.length };
+      return state.concat(newTask);
     }
     case "UPDATE_TASK": {
       const updatedTaskIndex = state.findIndex((t) => t.id === action.data.id);

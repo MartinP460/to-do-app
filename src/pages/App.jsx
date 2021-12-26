@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { initializeTasks } from "../reducers/reducer";
 
 import Tasks from "../components/Tasks";
+import Input from "../components/Input";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,12 @@ const App = () => {
     dispatch(initializeTasks());
   }, [dispatch]);
 
-  return <Tasks />;
+  return (
+    <>
+      <Input />
+      <Tasks />
+    </>
+  );
 };
 
 export default App;
