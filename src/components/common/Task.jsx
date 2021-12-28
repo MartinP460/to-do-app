@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import PropTypes, { bool, string } from "prop-types";
 import { useDispatch } from "react-redux";
-import { StarOutline } from "iconoir-react";
+import { StarOutline, Trash } from "iconoir-react";
+
 import { updateTask } from "../../reducers/reducer";
 
 const Task = ({ task }) => {
@@ -26,33 +27,56 @@ const Task = ({ task }) => {
     );
   };
 
+  const handleDelete = () => "deleted!";
+
   return (
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      className="flex leading-tight h-10"
     >
       <input
         type="radio"
         defaultChecked={task.completed}
         onClick={handleCheck}
+        className="self-center mr-1"
       />
       <p
-        className={task.completed ? "line-through" : "first-letter:first-line:"}
+        className={`flex-auto self-center ${
+          task.completed ? "line-through" : ""
+        }`}
       >
         {task.title}
       </p>
-      <div
-        onClick={handleStar}
-        onKeyDown={handleStar}
-        role="button"
-        tabIndex={0}
-        className={hover ? "" : "invisible"}
-      >
-        <StarOutline
-          fill={task.starred ? "gold" : "none"}
-          height={20}
-          width={20}
-        />
+      <div className="flex gap-1 ml-3">
+        <div
+          onClick={handleDelete}
+          onKeyDown={handleDelete}
+          role="button"
+          tabIndex={0}
+          className={`flex ${hover ? "" : "invisible"}`}
+        >
+          <Trash
+            color="firebrick"
+            height={20}
+            width={20}
+            className="self-center"
+          />
+        </div>
+        <div
+          onClick={handleStar}
+          onKeyDown={handleStar}
+          role="button"
+          tabIndex={0}
+          className={`flex ${hover ? "" : "invisible"}`}
+        >
+          <StarOutline
+            fill={task.starred ? "gold" : "none"}
+            height={20}
+            width={20}
+            className="self-center"
+          />
+        </div>
       </div>
     </div>
   );
