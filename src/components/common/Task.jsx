@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes, { bool, string } from "prop-types";
 import { useDispatch } from "react-redux";
 import { StarOutline, Trash } from "iconoir-react";
-
 import { updateTask } from "../../reducers/reducer";
 
 const Task = ({ task }) => {
@@ -36,10 +35,12 @@ const Task = ({ task }) => {
       className="flex leading-tight h-10"
     >
       <input
-        type="radio"
+        type="checkbox"
         defaultChecked={task.completed}
         onClick={handleCheck}
-        className="self-center mr-1"
+        className={`self-center mr-2 w-4 h-4 ${
+          task.completed ? "accent-gray-500" : "accent-green-600"
+        }`}
       />
       <p
         className={`flex-auto self-center ${

@@ -16,7 +16,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <div className="max-w-md mx-auto px-2">
+      <div className="max-w-md mx-auto px-4">
         <Input />
         <Tasks />
       </div>
