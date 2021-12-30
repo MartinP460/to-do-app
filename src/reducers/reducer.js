@@ -3,18 +3,21 @@ const tasks = [
     title: "Do the laundry",
     completed: false,
     starred: false,
+    created: Date.now(),
     id: 0,
   },
   {
     title: "Clean your room and eat some donuts",
     completed: false,
     starred: true,
+    created: Date.now() - 1000000,
     id: 1,
   },
   {
     title: "Do the dishes",
     completed: true,
-    starred: true,
+    starred: false,
+    created: Date.now() + 10000,
     id: 2,
   },
 ];
