@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import PropTypes, { bool, string } from "prop-types";
+import PropTypes, { bool, string, number } from "prop-types";
 import { useDispatch } from "react-redux";
 import { StarOutline, Trash } from "iconoir-react";
-import { updateTask } from "../../reducers/reducer";
+import { updateTask, deleteTask } from "../../reducers/reducer";
 
 const Task = ({ task }) => {
   const dispatch = useDispatch();
@@ -26,7 +26,9 @@ const Task = ({ task }) => {
     );
   };
 
-  const handleDelete = () => "deleted!";
+  const handleDelete = () => {
+    dispatch(deleteTask(task.id));
+  };
 
   return (
     <div
@@ -74,6 +76,7 @@ Task.propTypes = {
     title: string.isRequired,
     completed: bool.isRequired,
     starred: bool.isRequired,
+    id: number.isRequired,
   }).isRequired,
 };
 

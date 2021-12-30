@@ -34,6 +34,11 @@ export const updateTask = (content) => ({
   data: content,
 });
 
+export const deleteTask = (id) => ({
+  type: "DELETE_TASK",
+  data: { id },
+});
+
 // eslint-disable-next-line default-param-last
 const reducer = (state = [], action) => {
   switch (action.type) {
@@ -49,6 +54,9 @@ const reducer = (state = [], action) => {
       const updatedTasks = [...state];
       updatedTasks[updatedTaskIndex] = action.data;
       return updatedTasks;
+    }
+    case "DELETE_TASK": {
+      return state.filter((t) => t.id !== action.data.id);
     }
     default:
       return state;
