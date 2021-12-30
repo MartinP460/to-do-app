@@ -10,14 +10,14 @@ const tasks = [
     title: "Clean your room and eat some donuts",
     completed: false,
     starred: true,
-    created: Date.now() - 1000000,
+    created: Date.now() - 1000,
     id: 1,
   },
   {
     title: "Do the dishes",
     completed: true,
     starred: false,
-    created: Date.now() + 10000,
+    created: Date.now() + 1000,
     id: 2,
   },
 ];

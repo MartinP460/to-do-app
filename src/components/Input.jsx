@@ -14,6 +14,7 @@ const Input = () => {
         title: input,
         completed: false,
         starred: false,
+        created: Date.now(),
       })
     );
     setInput("");
