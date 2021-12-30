@@ -32,52 +32,38 @@ const Task = ({ task }) => {
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="flex leading-tight h-10"
+      className="flex items-center leading-tight h-10"
     >
       <input
         type="checkbox"
         defaultChecked={task.completed}
         onClick={handleCheck}
-        className={`self-center mr-2 w-4 h-4 ${
-          task.completed ? "accent-gray-500" : "accent-green-600"
-        }`}
+        className="mr-2 w-4 h-4 accent-green-600 checked:accent-gray-500"
       />
-      <p
-        className={`flex-auto self-center ${
-          task.completed ? "line-through" : ""
-        }`}
-      >
+      <p className={`flex-auto${task.completed ? " line-through" : ""}`}>
         {task.title}
       </p>
-      <div className="flex gap-1 ml-3">
-        <div
-          onClick={handleDelete}
-          onKeyDown={handleDelete}
-          role="button"
-          tabIndex={0}
-          className={`flex ${hover ? "" : "invisible"}`}
-        >
+      <div
+        className={`flex items-center gap-1 ml-3${hover ? "" : " invisible"}`}
+      >
+        <button type="button" onClick={handleDelete}>
           <Trash
-            color="firebrick"
             height={20}
             width={20}
-            className="self-center"
+            className="text-red-700 hover:text-red-800"
           />
-        </div>
-        <div
-          onClick={handleStar}
-          onKeyDown={handleStar}
-          role="button"
-          tabIndex={0}
-          className={`flex ${hover ? "" : "invisible"}`}
-        >
+        </button>
+        <button type="button" onClick={handleStar}>
           <StarOutline
-            fill={task.starred ? "gold" : "none"}
             height={20}
             width={20}
-            className="self-center"
+            className={`transition-colors ease-in-out duration-75${
+              task.starred
+                ? " visible fill-amber-400 text-amber-400 hover:fill-amber-500 hover:text-amber-500"
+                : " fill-gray-300 text-gray-300 hover:fill-gray-400 hover:text-gray-400"
+            }`}
           />
-        </div>
+        </button>
       </div>
     </div>
   );

@@ -10,9 +10,6 @@ const Tasks = () => {
     tasks.filter((t) => t.completed),
   ]);
 
-  console.log(active);
-  console.log(completed);
-
   if (active.length === 0 && completed.length === 0) {
     return (
       <div className="flex flex-col items-center mt-8">

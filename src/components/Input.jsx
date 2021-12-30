@@ -6,7 +6,6 @@ import { createTask } from "../reducers/reducer";
 const Input = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
-  const [hoverSubmit, setHoverSubmit] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,17 +41,11 @@ const Input = () => {
           placeholder="A new task..."
         />
       </div>
-      <button
-        type="submit"
-        className="absolute top-8 right-0"
-        onMouseEnter={() => setHoverSubmit(true)}
-        onMouseLeave={() => setHoverSubmit(false)}
-      >
+      <button type="submit" className="absolute top-8 right-0">
         <ArrowRight
           height={32}
           width={32}
-          color={hoverSubmit ? "#A6B1E1" : "currentColor"}
-          className="transition-all ease-in"
+          className="text-gray-500 hover:text-gray-700 transition-all ease-in"
         />
       </button>
     </form>

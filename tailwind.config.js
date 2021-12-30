@@ -18,6 +18,8 @@ module.exports = {
       white: colors.white,
       gray: colors.gray,
       green: colors.green,
+      amber: colors.amber,
+      red: colors.red,
     },
     fontFamily: {
       sans: ["'Open Sans'", "sans-serif"],
