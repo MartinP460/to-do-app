@@ -8,7 +8,8 @@ const Input = () => {
   const [input, setInput] = useState("");
   const [hoverSubmit, setHoverSubmit] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     dispatch(
       createTask({
         title: input,
@@ -20,7 +21,10 @@ const Input = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-5/6 mx-auto mt-16 relative">
+    <form
+      onSubmit={(e) => handleSubmit(e)}
+      className="w-5/6 mx-auto mt-16 relative"
+    >
       <div className="flex flex-col border-b-2">
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label
@@ -40,7 +44,6 @@ const Input = () => {
       </div>
       <button
         type="submit"
-        onClick={handleSubmit}
         className="absolute top-8 right-0"
         onMouseEnter={() => setHoverSubmit(true)}
         onMouseLeave={() => setHoverSubmit(false)}
