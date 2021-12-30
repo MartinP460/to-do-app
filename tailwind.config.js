@@ -22,7 +22,7 @@ module.exports = {
       red: colors.red,
     },
     fontFamily: {
-      sans: ["'Open Sans'", "sans-serif"],
+      sans: ["'Lato'", "sans-serif"],
     },
     extend: {},
   },
