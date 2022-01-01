@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes, { bool, string, number } from "prop-types";
 import { useDispatch } from "react-redux";
 import { StarOutline, Trash } from "iconoir-react";
-import { updateTask, deleteTask } from "../../reducers/reducer";
+import { updateTask, deleteTask } from "../../reducers/taskReducer";
 
 const Task = ({ task }) => {
   const dispatch = useDispatch();
@@ -34,13 +34,13 @@ const Task = ({ task }) => {
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="flex items-center leading-tight h-10"
+      className="flex items-center leading-tight mt-3"
     >
       <input
         type="checkbox"
         defaultChecked={task.completed}
         onClick={handleCheck}
-        className="mr-2 w-4 h-4 accent-green-600 checked:accent-gray-500"
+        className="shrink-0 mr-2 w-4 h-4 accent-green-600 checked:accent-gray-500"
       />
       <p className={`flex-auto${task.completed ? " line-through" : ""}`}>
         {task.title}

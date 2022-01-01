@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { initializeTasks } from "../reducers/reducer";
+import { initializeTasks } from "../reducers/taskReducer";
 
 import Header from "../components/Header";
 import Tasks from "../components/Tasks";
@@ -16,7 +16,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <div className="max-w-md mx-auto px-4">
+      <div className="max-w-md mx-auto px-4 text-gray-600">
         <Input />
         <Tasks />
       </div>

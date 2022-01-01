@@ -3,15 +3,24 @@ import { useSelector } from "react-redux";
 import { Trophy, Gym, ArrowUpCircled } from "iconoir-react";
 
 import Task from "./common/Task";
+import Dropdown from "./Dropdown";
 
 const Tasks = () => {
-  const [active, completed] = useSelector((tasks) => {
-    const sortedTasks = tasks.sort(
-      (firstEl, secondEl) => firstEl.created - secondEl.created
-    );
+  const [active, completed] = useSelector((state) => {
+    let tasks = state.tasks.filter((t) => !t.completed);
+
+    if (state.filter === "STARRED") {
+      tasks = tasks.filter((t) => t.starred);
+    }
+    if (state.sort === "ALPHABETICALLY") {
+      tasks = tasks.sort((a, b) => a.title.localeCompare(b.title));
+    }
+    if (state.sort === "TIME") {
+      tasks = tasks.sort((a, b) => a.created - b.created);
+    }
     return [
-      sortedTasks.filter((t) => !t.completed),
-      sortedTasks.filter((t) => t.completed),
+      tasks.filter((t) => !t.completed),
+      state.tasks.filter((t) => t.completed),
     ];
   });
 
@@ -27,14 +36,17 @@ const Tasks = () => {
   }
 
   return (
-    <>
-      <h3 className="font-bold tracking-tight mt-8">Active tasks</h3>
+    <div className="relative">
+      <div className="flex justify-between mt-8">
+        <h3 className="font-bold tracking-tight">Active tasks</h3>
+        <Dropdown />
+      </div>
       <div className="mt-2">
         {active.length === 0 ? (
           <div className="flex flex-col items-center">
             <Trophy width={40} height={40} className="text-gray-300" />
             <p className="text-gray-400">
-              You&apos;ve completed all your tasks. Great job!
+              No tasks here. Maybe you&apos;ve completed them all.
             </p>
           </div>
         ) : (
@@ -52,7 +64,7 @@ const Tasks = () => {
           completed.map((task) => <Task task={task} key={task.id} />)
         )}
       </div>
-    </>
+    </div>
   );
 };
 

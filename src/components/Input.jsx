@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { ArrowRight } from "iconoir-react";
-import { createTask } from "../reducers/reducer";
+import { createTask } from "../reducers/taskReducer";
 
 const Input = () => {
   const dispatch = useDispatch();

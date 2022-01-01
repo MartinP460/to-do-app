@@ -20,6 +20,27 @@ const tasks = [
     created: Date.now() + 1000,
     id: 2,
   },
+  {
+    title: "Apprehend a thief",
+    completed: false,
+    starred: false,
+    created: Date.now() + 1000,
+    id: 3,
+  },
+  {
+    title: "Enlist in a cooking program",
+    completed: false,
+    starred: false,
+    created: Date.now() + 1000,
+    id: 4,
+  },
+  {
+    title: "Xperience something cool",
+    completed: false,
+    starred: false,
+    created: Date.now() + 1000,
+    id: 5,
+  },
 ];
 
 export const initializeTasks = () => ({
@@ -43,7 +64,7 @@ export const deleteTask = (id) => ({
 });
 
 // eslint-disable-next-line default-param-last
-const reducer = (state = [], action) => {
+const taskReducer = (state = [], action) => {
   switch (action.type) {
     case "INIT_TASKS": {
       return action.data;
@@ -66,4 +87,4 @@ const reducer = (state = [], action) => {
   }
 };
 
-export default reducer;
+export default taskReducer;
