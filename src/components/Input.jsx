@@ -36,13 +36,18 @@ const Input = () => {
         <input
           type="text"
           id="task"
+          data-test="new-task"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           className="py-3 text-lg outline-0 w-4/5"
           placeholder="A new task..."
         />
       </div>
-      <button type="submit" className="absolute top-8 right-0">
+      <button
+        type="submit"
+        data-test="submit-task"
+        className="absolute top-8 right-0"
+      >
         <ArrowRight
           height={32}
           width={32}

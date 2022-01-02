@@ -7,3 +7,8 @@
 # misc
 .DS_Store
 /src/assets
+
+# testing
+/cypress/fixtures
+/cypress/plugins
+/cypress/support/index.js

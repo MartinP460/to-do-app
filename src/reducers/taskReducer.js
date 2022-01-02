@@ -20,27 +20,6 @@ const tasks = [
     created: Date.now() + 1000,
     id: 2,
   },
-  {
-    title: "Apprehend a thief",
-    completed: false,
-    starred: false,
-    created: Date.now() + 1000,
-    id: 3,
-  },
-  {
-    title: "Enlist in a cooking program",
-    completed: false,
-    starred: false,
-    created: Date.now() + 1000,
-    id: 4,
-  },
-  {
-    title: "Xperience something cool",
-    completed: false,
-    starred: false,
-    created: Date.now() + 1000,
-    id: 5,
-  },
 ];
 
 export const initializeTasks = () => ({

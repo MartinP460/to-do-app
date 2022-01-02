@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
+    "cypress/globals": true,
   },
   extends: ["plugin:react/recommended", "airbnb", "prettier"],
   parserOptions: {
@@ -12,7 +13,7 @@ module.exports = {
     ecmaVersion: 13,
     sourceType: "module",
   },
-  plugins: ["react", "prettier"],
+  plugins: ["react", "prettier", "cypress"],
   rules: {
     "prettier/prettier": ["error", { endOfLine: "auto" }],
     "func-names": ["off"],

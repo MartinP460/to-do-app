@@ -41,7 +41,7 @@ const Tasks = () => {
         <h3 className="font-bold tracking-tight">Active tasks</h3>
         <Dropdown />
       </div>
-      <div className="mt-2">
+      <div className="mt-2" id="active-tasks">
         {active.length === 0 ? (
           <div className="flex flex-col items-center">
             <Trophy width={40} height={40} className="text-gray-300" />
@@ -54,7 +54,7 @@ const Tasks = () => {
         )}
       </div>
       <h3 className="font-bold tracking-tight mt-12">Completed tasks</h3>
-      <div className="mt-2">
+      <div className="mt-2" id="completed-tasks">
         {completed.length === 0 ? (
           <div className="flex flex-col items-center">
             <Gym width={40} height={40} className="text-gray-300" />

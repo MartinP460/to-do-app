@@ -55,7 +55,7 @@ const Task = ({ task }) => {
             className="text-red-700 hover:text-red-800"
           />
         </button>
-        <button type="button" onClick={handleStar}>
+        <button type="button" onClick={handleStar} className="star-task">
           <StarOutline
             height={20}
             width={20}
