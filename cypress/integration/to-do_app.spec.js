@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow-callback */
 describe("To-do app", function () {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
@@ -20,7 +21,16 @@ describe("To-do app", function () {
       cy.getBySel("submit-task").click();
     });
 
-    it("task can be starred", function () {
+    it("can be completed", function () {
+      cy.contains("Do the dishes")
+        .parent()
+        .find("input[type='checkbox']")
+        .check();
+
+      cy.get("#completed-tasks > li.task").should("have.length", 2);
+    });
+
+    it("can be starred", function () {
       cy.contains("Do the dishes").parent().trigger("mouseover");
       cy.contains("Do the dishes").parent().find("button.star-task").click();
 
@@ -28,6 +38,13 @@ describe("To-do app", function () {
         .parent()
         .find("button.star-task > svg")
         .should("have.class", "text-amber-400");
+    });
+
+    it("can be deleted", function () {
+      cy.contains("Do the dishes").parent().trigger("mouseover");
+      cy.contains("Do the dishes").parent().find("button.delete-task").click();
+
+      cy.get("#active-tasks > li.task").should("have.length", 2);
     });
   });
 });

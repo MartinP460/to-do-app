@@ -41,7 +41,7 @@ const Tasks = () => {
         <h3 className="font-bold tracking-tight">Active tasks</h3>
         <Dropdown />
       </div>
-      <div className="mt-2" id="active-tasks">
+      <div className="mt-2">
         {active.length === 0 ? (
           <div className="flex flex-col items-center">
             <Trophy width={40} height={40} className="text-gray-300" />
@@ -50,18 +50,26 @@ const Tasks = () => {
             </p>
           </div>
         ) : (
-          active.map((task) => <Task task={task} key={task.id} />)
+          <ul id="active-tasks">
+            {active.map((task) => (
+              <Task task={task} key={task.id} />
+            ))}
+          </ul>
         )}
       </div>
       <h3 className="font-bold tracking-tight mt-12">Completed tasks</h3>
-      <div className="mt-2" id="completed-tasks">
+      <div className="mt-2">
         {completed.length === 0 ? (
           <div className="flex flex-col items-center">
             <Gym width={40} height={40} className="text-gray-300" />
             <p className="text-gray-400">No completed tasks. Get going!</p>
           </div>
         ) : (
-          completed.map((task) => <Task task={task} key={task.id} />)
+          <ul id="completed-tasks">
+            {completed.map((task) => (
+              <Task task={task} key={task.id} />
+            ))}
+          </ul>
         )}
       </div>
     </div>

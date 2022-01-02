@@ -31,15 +31,16 @@ const Task = ({ task }) => {
   };
 
   return (
-    <div
+    <li
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="flex items-center leading-tight mt-3"
+      className="flex items-center leading-tight mt-3 task"
     >
       <input
         type="checkbox"
         defaultChecked={task.completed}
         onClick={handleCheck}
+        data-test="complete-task"
         className="shrink-0 mr-2 w-4 h-4 accent-green-600 checked:accent-gray-500"
       />
       <p className={`flex-auto${task.completed ? " line-through" : ""}`}>
@@ -48,7 +49,7 @@ const Task = ({ task }) => {
       <div
         className={`flex items-center gap-1 ml-3${hover ? "" : " invisible"}`}
       >
-        <button type="button" onClick={handleDelete}>
+        <button type="button" onClick={handleDelete} className="delete-task">
           <Trash
             height={20}
             width={20}
@@ -67,7 +68,7 @@ const Task = ({ task }) => {
           />
         </button>
       </div>
-    </div>
+    </li>
   );
 };
 
