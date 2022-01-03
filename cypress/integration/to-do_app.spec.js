@@ -15,6 +15,14 @@ describe("To-do app", function () {
     cy.contains("Buy groceries");
   });
 
+  describe("when you submit the form", function () {
+    it("will throw an error when no text has been inputted", function () {
+      cy.getBySel("submit-task").click();
+
+      cy.get("#active-tasks > li.task").should("have.length", 2);
+    });
+  });
+
   describe("when a new task is added", function () {
     beforeEach(function () {
       cy.getBySel("new-task").type("Do the dishes");

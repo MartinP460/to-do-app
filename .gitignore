@@ -12,3 +12,4 @@
 /cypress/fixtures
 /cypress/plugins
 /cypress/support/index.js
+/cypress/downloads

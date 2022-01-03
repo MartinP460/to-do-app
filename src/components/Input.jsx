@@ -6,18 +6,24 @@ import { createTask } from "../reducers/taskReducer";
 const Input = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
+  const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      createTask({
-        title: input,
-        completed: false,
-        starred: false,
-        created: Date.now(),
-      })
-    );
-    setInput("");
+    if (input.length === 0) {
+      setError(true);
+    } else {
+      dispatch(
+        createTask({
+          title: input,
+          completed: false,
+          starred: false,
+          created: Date.now(),
+        })
+      );
+      setInput("");
+      setError(false);
+    }
   };
 
   return (
@@ -25,7 +31,7 @@ const Input = () => {
       onSubmit={(e) => handleSubmit(e)}
       className="w-5/6 mx-auto mt-16 relative"
     >
-      <div className="flex flex-col border-b-2">
+      <div className={`flex flex-col border-b-2 ${error && "border-red-400"}`}>
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label
           htmlFor="task"
@@ -54,6 +60,9 @@ const Input = () => {
           className="text-gray-500 hover:text-gray-700 transition-all ease-in"
         />
       </button>
+      <p className="text-red-600 text-sm">
+        {error && "A new task cannot be empty."}
+      </p>
     </form>
   );
 };
